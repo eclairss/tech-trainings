@@ -1,0 +1,93 @@
+<!-- <div> -->
+<!-- Holds Create & Update of Users; An option to delete existing user when viewing as Update-->
+<!-- <form>
+
+    </form>
+</div> -->
+
+<form [formGroup]="myForm" class="form-content" id="userForm">
+    <div class="form-group">
+        <input *ngIf="currentUser.id" formControlName="id" [attr.disabled]="true" type="text" class="form-control"
+            placeholder="Your ID *" />
+    </div>
+    <div class="form-group">
+        <input formControlName="FirstName" type="text" class="form-control" placeholder="Your First Name *" />
+        <div *ngIf="myForm.controls['FirstName'].invalid && (myForm.controls['FirstName'].dirty || myForm.controls['FirstName'].touched)"
+            class="text-danger">
+            <div *ngIf="myForm.controls['FirstName'].errors.required">
+                First Name is required.
+            </div>
+            <div *ngIf="myForm.controls['FirstName'].errors.maxlength">
+                First Name allows {{myForm.controls['FirstName'].errors.maxlength.requiredLength}} characters only.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input formControlName="LastName" type="text" class="form-control" placeholder="Your Last Name *" />
+        <div *ngIf="myForm.controls['LastName'].invalid && (myForm.controls['LastName'].dirty || myForm.controls['LastName'].touched)"
+            class="text-danger">
+            <div *ngIf=" myForm.controls['LastName'].errors.required">
+            Last Name is required.
+        </div>
+        <div *ngIf="myForm.controls['LastName'].errors.maxlength">
+            Last Name allows {{myForm.controls['LastName'].errors.maxlength.requiredLength}} characters only.
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group">
+        <input formControlName="UserName" type="text" class="form-control" placeholder="Your User Name *" />
+        <div *ngIf="myForm.controls['UserName'].invalid && (myForm.controls['UserName'].dirty || myForm.controls['UserName'].touched)"
+            class="text-danger">
+            <div *ngIf="myForm.controls['UserName'].errors.required">
+                User Name is required.
+            </div>
+            <div *ngIf="myForm.controls['UserName'].errors.maxlength">
+                User Name allows {{myForm.controls['UserName'].errors.maxlength.requiredLength}} characters only.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input formControlName="Password" type="password" class="form-control" placeholder="Your Password *" />
+        <div *ngIf="myForm.controls['Password'].invalid && (myForm.controls['Password'].dirty || myForm.controls['Password'].touched)"
+            class="text-danger">
+            <div *ngIf="myForm.controls['Password'].errors.required">
+                Password is required.
+            </div>
+            <div *ngIf="myForm.controls['Password'].errors.maxlength">
+                Password allows {{myForm.controls['Password'].errors.maxlength.requiredLength}} characters only.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input formControlName="EmailAddress" type="text" class="form-control" placeholder="Your Email Address *" />
+        <div *ngIf="myForm.controls['EmailAddress'].invalid && (myForm.controls['EmailAddress'].dirty || myForm.controls['EmailAddress'].touched)"
+            class="text-danger">
+            <div *ngIf="myForm.controls['EmailAddress'].errors.required">
+                Email is required.
+            </div>
+            <div *ngIf="myForm.controls['EmailAddress'].errors.email">
+                Email must be a valid email address.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <select class="form-control" formControlName="Role" id="Role">
+            <option [ngValue]="null" disabled>Select Role</option>
+            <option *ngFor="let role of userRoles" [ngValue]="role.value">
+                {{ role.label }}
+            </option>
+        </select>
+        <div *ngIf="myForm.controls['Role'].invalid && (myForm.controls['Role'].dirty || myForm.controls['Role'].touched)"
+            class="text-danger">
+            <div *ngIf="myForm.controls['Role'].errors.required">
+                Role is required.
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary btnSubmit" (click)="onFormSubmit()">Submit</button>
+
+</form>

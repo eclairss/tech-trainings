@@ -1,0 +1,20 @@
+<div class="summary" *ngIf="branch && cinema && movie && schedule && reservation">
+  <div><label>Movie Title:</label> {{ movie.Title }}</div>
+  <div><label>Branch:</label> {{ branch.name }}</div>
+  <div><label>Cinema:</label> {{ cinema.name }}</div>
+  <div>
+    <label>Screening Date:</label>
+    {{ schedule.startDate | date }}
+  </div>
+  <div>
+    <label>Screening Time:</label>
+    {{ schedule.startDate | date: 'shortTime' }}
+  </div>
+  <div><label>Selected Seats:</label> {{ getSeatText() }}</div>
+  <div><label>No. of Seats:</label> {{ reservation.seats.length }}</div>
+  <div><label>Ticket Price:</label> {{ schedule.ticketPrice }}</div>
+  <div>
+    <label>Total:</label>
+    {{ reservation.totalAmount }}
+  </div>
+</div>

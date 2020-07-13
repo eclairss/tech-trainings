@@ -1,0 +1,52 @@
+<div class="row my-2">
+  <div class="col-md-12">
+    <form class="form-inline">
+      <button class="btn btn-outline-primary" (click)="onClickAdd()">
+        <i class="icon ion-ios-add-circle-outline"></i> Add Movie
+      </button>
+      <label for="txtSearchMovie" class="font-weight-bold ml-3 mr-3">
+        Search:
+      </label>
+      <input id="txtSearchMovie" type="text" class="form-control" [class.is-invalid]="searchFailed"
+        [value]="searchItem.Title" (selectItem)="onSelectItem($event)" [ngbTypeahead]="search"
+        [resultTemplate]="movieSearchTemplateList" placeholder="Movie title" />
+      <span *ngIf="searching">searching...</span>
+      <div class="invalid-feedback" *ngIf="searchFailed">
+        Sorry, suggestions could not be loaded.
+      </div>
+      <ng-template #movieSearchTemplateList let-r="result" let-t="term">
+        <ngb-highlight [result]="r.Title" [term]="t"></ngb-highlight>
+      </ng-template>
+      <label class="font-weight-bold ml-3 mr-3">
+        Items Per Page
+      </label>
+      <select name="itemsPerPage" class="form-control" [(ngModel)]="itemsPerPage"
+        (change)="onItemsPerPageChanged($event)">
+        <option [ngValue]="3">3</option>
+        <option [ngValue]="6">6</option>
+        <option [ngValue]="9">9</option>
+      </select>
+    </form>
+  </div>
+</div>
+<div class="row row-eq-height my-2">
+  <div class="col-md-3" *ngFor="
+      let movie of movies
+        | paginate
+          : {
+              itemsPerPage: itemsPerPage,
+              currentPage: page,
+              totalItems: totalCount
+            }
+    ">
+    <app-movie-card [movie]="movie" [link]="'/admin/movie/' + movie.id" [startDate]="movie.Released"
+      (viewTrailerClickEvent)="viewTrailerClickEvent($event)" (getTicketClickEvent)="getTicket($event)">
+    </app-movie-card>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <pagination-controls (pageChange)="onChangePage($event)">
+    </pagination-controls>
+  </div>
+</div>

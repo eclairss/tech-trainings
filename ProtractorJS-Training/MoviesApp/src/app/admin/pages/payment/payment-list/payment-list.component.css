@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+}
+
+td.transaction-date {
+    width: 15%;
+}
+
+td.description {
+    width: 70%;
+    padding: 0px 5px;
+}
+
+td.amount {
+    width: 15%;
+    text-align: right;
+}

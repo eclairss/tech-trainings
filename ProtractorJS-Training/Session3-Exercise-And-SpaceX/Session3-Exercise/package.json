@@ -1,0 +1,15 @@
+{
+  "name": "session3-exercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "angular-spec.js",
+  "scripts": {
+    "server-update": "webdriver-manager update",
+    "test": "protractor conf.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "protractor": "^5.4.4"
+  }
+}

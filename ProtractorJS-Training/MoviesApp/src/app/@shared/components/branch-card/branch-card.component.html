@@ -1,0 +1,17 @@
+<div class="branch-card">
+  <div class="text-center">
+    <a href="#" [routerLink]="[link]" *ngIf="link">
+      <img class="img-fluid" src="../../../../assets/img/sample01.jpg" />
+    </a>
+    <img class="img-fluid" src="../../../../assets/img/sample01.jpg" *ngIf="!link" />
+  </div>
+  <div class="text-center">
+    <a href="#" [routerLink]="[link]" *ngIf="link"> {{ branch.name }} </a>
+    <span *ngIf="!link"> {{ branch.name }} </span>
+    <br />
+    <p class="text-wrap">{{ branch.address }}</p>
+  </div>
+  <div class="text-center">
+    <button class="btn btn-info m-2" (click)="onClickCheckSchedules()">Check Schedules</button>
+  </div>
+</div>

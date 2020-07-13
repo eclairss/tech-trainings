@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="row" *ngIf="enableRowCol">
+    <div class="col-md-12">
+      <form>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="mr-2">Rows</label>
+            <input
+              name="rows"
+              type="number"
+              class="form-control mr-2"
+              min="0"
+              max="20"
+              [(ngModel)]="cinemaSeatPlan.rows"
+              (change)="onChangeRows()"
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="mr-2">Columns</label>
+            <input
+              name="columns"
+              type="number"
+              class="form-control mr-2"
+              min="0"
+              max="20"
+              [(ngModel)]="cinemaSeatPlan.columns"
+              (change)="onChangeColumns()"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7 screen">
+      SCREEN
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="seat-plan" #seatPlan>
+        <app-seat
+          *ngFor="let seat of cinemaSeatPlan.seats"
+          [seat]="seat"
+          (click)="onClickSeat(seat)"
+        ></app-seat>
+      </div>
+    </div>
+  </div>
+</div>

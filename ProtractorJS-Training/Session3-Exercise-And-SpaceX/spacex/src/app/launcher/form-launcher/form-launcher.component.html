@@ -1,0 +1,167 @@
+<div class="frm-launcher">
+    <!-- Holds Create & Update of Launcher Schedules; An option to delete existing launcher scheds when viewing as Update-->
+    <!-- <div class="sub-image">
+        <img src="../../../assets/images/SpaceX/planet-target--img.png">
+    </div> -->
+
+    <div class=" form-main-content">
+        <div class="header-section" *ngIf="isCreatingNewLaunch">
+            <h3>Plan a new Launch</h3>
+        </div>
+
+        <div class="form-section">
+            <form [formGroup]="launchPlanFormGroup" id="launchPlanForm">
+                <div class="row form-group">
+                    <div class="label-content col-md-2">
+                        <label>
+                            Flight Number *
+                        </label>
+                    </div>
+                    <div class="form-content col-md-6">
+                        <label>{{ launchPlan.FlightNumber }}</label>
+                        <!-- <input type="text" class="form-control" formControlName="flightnumber" name="flightnumber"
+                            placeholder="Flight Number" required appDecimalOnly>
+                        <div class="text-danger"
+                            *ngIf="launchPlanFormGroup.controls['flightnumber'].invalid && (launchPlanFormGroup.controls['flightnumber'].dirty || launchPlanFormGroup.controls['flightnumber'].touched)">
+                            <div *ngIf="launchPlanFormGroup.controls['flightnumber'].errors.required">
+                                Flight Number is Required
+                            </div>
+                            <div *ngIf="launchPlanFormGroup.controls['flightnumber'].errors.min">
+                                Flight Number should be greater than 0
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="label-content col-md-2">
+                        <label>
+                            Mission Name *
+                        </label>
+                    </div>
+                    <div class="form-content col-md-6">
+                        <input type="text" class="form-control" formControlName="missionname" name="missionname"
+                            placeholder="Mission Name" required>
+                        <div class="text-danger"
+                            *ngIf="launchPlanFormGroup.controls['missionname'].invalid && (launchPlanFormGroup.controls['missionname'].dirty || launchPlanFormGroup.controls['missionname'].touched)">
+                            <div *ngIf="launchPlanFormGroup.controls['missionname'].errors.required">
+                                Mission Name is Required
+                            </div>
+                            <div *ngIf="launchPlanFormGroup.controls['missionname'].errors.maxlength">
+                                Exceeds the maximum allowable length of 50 characters
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="label-content col-md-2">
+                        <label>
+                            Mission ID *
+                        </label>
+                    </div>
+                    <div class="form-content col-md-6">
+                        <input type="text" class="form-control" formControlName="missionid" name="missionid"
+                            [readonly]="true" required>
+                        <div class="text-danger"
+                            *ngIf="launchPlanFormGroup.controls['missionid'].invalid && (launchPlanFormGroup.controls['missionid'].dirty || launchPlanFormGroup.controls['missionid'].touched)">
+                            <div *ngIf="launchPlanFormGroup.controls['missionid'].errors.required">
+                                Mission ID is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="label-content col-md-2">
+                        <label>
+                            Details *
+                        </label>
+                    </div>
+                    <div class="form-content col-md-6">
+                        <textarea form="launchPlanForm" rows="4" class="form-control" formControlName="details"
+                            name="detail" placeholder="Details">
+                        </textarea>
+                        <!-- <input type="textarea" class="form-control" formControlName="details" name="detail"> -->
+                        <div class="text-danger"
+                            *ngIf="launchPlanFormGroup.controls['details'].invalid && (launchPlanFormGroup.controls['details'].dirty || launchPlanFormGroup.controls['details'].touched)">
+                            <div *ngIf="launchPlanFormGroup.controls['details'].errors.required">
+                                Details is Required
+                            </div>
+                            <div *ngIf="launchPlanFormGroup.controls['details'].errors.maxlength">
+                                Exceeds the maximum allowable length of 50 characters
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="label-content col-md-2">
+                        <label>
+                            Launch Date *
+                        </label>
+                    </div>
+                    <div class="form-content col-md-6">
+                        <input class="form-control col-md-8 dateinput" formControlName="launchdate" name="detail"
+                            ngbDatepicker #d="ngbDatepicker" placeholder="{{ currentDatePlaceHolder }}" readonly>
+                        <button class="btn" (click)="d.toggle()" type="button">
+                            <span class="fa fa-calendar" style="font-size:30px; color:whitesmoke"></span>
+                        </button>
+                        <div class="text-danger"
+                            *ngIf="launchPlanFormGroup.controls['launchdate'].invalid && (launchPlanFormGroup.controls['launchdate'].dirty || launchPlanFormGroup.controls['launchdate'].touched)">
+                            <div *ngIf="launchPlanFormGroup.controls['launchdate'].errors.required">
+                                Launch Date is Required
+                            </div>
+                            <div
+                                *ngIf="launchPlanFormGroup.controls['launchdate'].errors.launchDatePassCurrentDateError">
+                                Launch Date could not be set on past dates
+                            </div>
+                            <div *ngIf="launchPlanFormGroup.controls['launchdate'].errors.launchDatePassYearDateError">
+                                Launch Date could only be set upto a year
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="label-content col-md-2">
+                        <label>
+                            Launched Window *
+                        </label>
+                    </div>
+                    <div class="form-content col-md-6">
+                        <input type="text" class="form-control" formControlName="launchWindow" name="launchWindow"
+                            placeholder="Launched Window" required appDecimalOnly>
+                        <div class="text-danger"
+                            *ngIf="launchPlanFormGroup.controls['launchWindow'].invalid && (launchPlanFormGroup.controls['launchWindow'].dirty || launchPlanFormGroup.controls['launchWindow'].touched)">
+                            <div *ngIf="launchPlanFormGroup.controls['launchWindow'].errors.required">
+                                Launched Window is Required
+                            </div>
+                            <div *ngIf="launchPlanFormGroup.controls['launchWindow'].errors.min">
+                                Launched Window should be greater than 0
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="label-content col-md-2">
+                        <label>
+                            Launched Status 
+                        </label>
+                    </div>
+                    <div class="form-content col-md-6">
+                        <select class="form-control" formControlName="launchSuccess" name="launchSuccess">
+                            <option [ngValue]="null">Pending</option>
+                            <option *ngFor="let status of ddlLaunchStatus" [ngValue]="status">
+                                {{ status }}
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary col-md-1" (click)="onFormSubmit()">Save</button>
+                    <button class="btn btn-primary col-md-1" (click)="cancelChanges()">Cancel</button>
+                    <button *ngIf="launchPlan.id" class="btn btn-danger col-md-1"
+                        (click)="deleteRecord()">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

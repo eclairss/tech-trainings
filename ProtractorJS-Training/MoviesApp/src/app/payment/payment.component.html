@@ -1,0 +1,140 @@
+<div class="payment" *ngIf="isValidReservation">
+  <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="cc-info">
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label">Cardholder Name:</label>
+            <div class="col-md-8">
+              <input
+                formControlName="cardholderName"
+                type="text"
+                class="form-control"
+                placeholder="Name"
+              />
+              <div
+                *ngIf="
+                  paymentForm.controls['cardholderName'].invalid &&
+                  (paymentForm.controls['cardholderName'].dirty ||
+                    paymentForm.controls['cardholderName'].touched)
+                "
+                class="text-danger"
+              >
+                <span
+                  *ngIf="paymentForm.controls['cardholderName'].errors.required"
+                >
+                  Name is required.
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label">Credit Card No.</label>
+            <div class="col-md-8">
+                <p-inputMask formControlName="cardNumber" mask="9999 9999 9999 9999">
+                  </p-inputMask>
+              <div
+                *ngIf="
+                  paymentForm.controls['cardNumber'].invalid &&
+                  (paymentForm.controls['cardNumber'].dirty ||
+                    paymentForm.controls['cardNumber'].touched)
+                "
+                class="text-danger"
+              >
+                <span
+                  *ngIf="paymentForm.controls['cardNumber'].errors.required"
+                >
+                  Card number is required.
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label">CVV</label>
+            <div class="col-md-8">
+              <p-inputMask formControlName="cvv" mask="999" type="password" slotChar=""></p-inputMask>
+              <div
+                *ngIf="
+                  paymentForm.controls['cvv'].invalid &&
+                  (paymentForm.controls['cvv'].dirty ||
+                    paymentForm.controls['cvv'].touched)
+                "
+                class="text-danger"
+              >
+                <span *ngIf="paymentForm.controls['cvv'].errors.required">
+                  CVV is required.
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label">Expiry Date</label>
+            <div class="col-md-8">
+              <p-inputMask formControlName="expiryDate" mask="99/99" placeholder="mm/yy"></p-inputMask>
+              <div
+                *ngIf="
+                  paymentForm.controls['expiryDate'].invalid &&
+                  (paymentForm.controls['expiryDate'].dirty ||
+                    paymentForm.controls['expiryDate'].touched)
+                "
+                class="text-danger"
+              >
+                <span
+                  *ngIf="paymentForm.controls['expiryDate'].errors.required"
+                >
+                  Expiry date is required.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <app-payment-summary *ngIf="initializedPayment" [payment]="payment" [seatNos]="getSeatText()"></app-payment-summary>
+        <div class="text-center action">
+          <button
+            type="submit"
+            class="btn btn-primary btn-proceed"
+            [disabled]="!paymentForm.valid"
+          >
+            Proceed
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<p-dialog
+  header="Confirmed Reservation"
+  [(visible)]="isDisplayConfirm"
+  [modal]="true"
+  [responsive]="true"
+  [style]="{ minWidth: '200px' }"
+  [minY]="70"
+  [maximizable]="true"
+  [baseZIndex]="10000"
+  [resizable]="false"
+>
+  <div>
+    <p *ngIf="isProcessing">Communicating with your bank. Wait for the process to complete.Do not refresh this page.</p>
+    <div *ngIf="!isProcessing">
+      <p>Your receipt has been sent to your email.</p>
+      <app-reservation-summary
+        [branch]="branch"
+        [cinema]="cinema"
+        [movie]="movie"
+        [schedule]="schedule"
+        [reservation]="reservation"
+      ></app-reservation-summary>
+    </div>
+  </div>
+  <p-footer *ngIf="!isProcessing">
+    <button
+      type="button"
+      (click)="onConfirm()"
+      class="btn btn-primary m-2"
+    >
+      Close
+    </button>
+  </p-footer>
+</p-dialog>

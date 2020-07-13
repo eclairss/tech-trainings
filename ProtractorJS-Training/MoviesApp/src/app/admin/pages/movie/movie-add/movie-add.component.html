@@ -1,0 +1,33 @@
+<h4>Add Movie</h4>
+<div class="col-12">
+  <form class="form-inline">
+    <label for="txtSearchMovie" class="font-weight-bold mr-3">Search:</label>
+    <input
+      id="txtSearchMovie"
+      type="text"
+      class="form-control"
+      [class.is-invalid]="searchFailed"
+      [value]="searchItem.Title"
+      (selectItem)="onSelectItem($event)"
+      [ngbTypeahead]="search"
+      [resultTemplate]="movieSearchTemplateAdd"
+      placeholder="OMDb movie title"
+    />
+    <span *ngIf="searching">searching...</span>
+    <div class="invalid-feedback" *ngIf="searchFailed">
+      Sorry, suggestions could not be loaded.
+    </div>
+    <ng-template #movieSearchTemplateAdd let-r="result" let-t="term">
+      <ngb-highlight [result]="r.Title" [term]="t"></ngb-highlight>
+    </ng-template>
+  </form>
+</div>
+<div *ngIf="movie" class="m-5">
+  <app-movie-detail [movie]="movie"></app-movie-detail>
+  <div class="col text-center mt-5">
+    <button class="btn btn-primary m-2" (click)="onAddMovie()">Add</button>
+  </div>
+</div>
+<a href="#" routerLink="/admin/movie" class="fs-24">
+  <i class="icon ion-ios-arrow-dropleft"></i>Back to list
+</a>

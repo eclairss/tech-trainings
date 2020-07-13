@@ -1,0 +1,38 @@
+.reserve-form {
+    display: flex;
+}
+
+.reservation-details {
+    margin: 10px;
+}
+
+.summary label {
+    font-weight: bold;
+}
+
+.error {
+    color: #ff0000;
+}
+
+.seat-plan {
+    margin-top: 50px;
+}
+
+.seat-legend {
+    margin-top: 50px;
+}
+
+.confirm-button {
+    margin-top: 40px;
+}
+
+.not-logged-btn {
+    width: 90%;
+}
+
+.seat-legend-grid {
+    display: grid;
+    grid-gap: 2px;
+    margin: 5px;
+
+}

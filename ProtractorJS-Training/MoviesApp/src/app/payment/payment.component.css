@@ -1,0 +1,16 @@
+.payment {
+  margin-top: 10vh;
+}
+
+.cc-info {
+  border: 1px black solid;
+  padding: 15px;
+}
+
+.action {
+  margin-top: 30px;
+}
+
+.btn-proceed {
+  width: 80%;
+}

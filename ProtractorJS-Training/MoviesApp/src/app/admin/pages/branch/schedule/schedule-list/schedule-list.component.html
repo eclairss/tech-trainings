@@ -1,0 +1,49 @@
+<div class="row my-2" *ngIf="movies">
+  <div class="col-md-12">
+    <form class="form-inline">
+      <button class="btn btn-outline-primary mr-3" (click)="onClickAdd()">
+        <i class="icon ion-ios-add-circle-outline"></i> Add Movie Schedule
+      </button>
+      <label class="font-weight-bold ml-3 mr-3">
+        Cinema
+      </label>
+      <select name="cinema" class="form-control" [(ngModel)]="cinema" (change)="onCinemaChanged($event)">
+        <option [ngValue]="undefined">-- All --</option>
+        <option *ngFor="let cinema of cinemas$ | async" [ngValue]="cinema">
+          {{ cinema.name }}
+        </option>
+      </select>
+      <label class="font-weight-bold ml-3 mr-3">
+        Items Per Page
+      </label>
+      <select name="itemsPerPage" class="form-control" [(ngModel)]="itemsPerPage"
+        (change)="onItemsPerPageChanged($event)">
+        <option [ngValue]="6">6</option>
+        <option [ngValue]="12">12</option>
+        <option [ngValue]="18">18</option>
+      </select>
+    </form>
+  </div>
+</div>
+<div class="row row-eq-height my-2">
+  <div class="col-md-3 p-1" *ngFor="
+      let schedule of schedules
+        | paginate
+          : {
+              itemsPerPage: itemsPerPage,
+              currentPage: page,
+              totalItems: totalCount
+            }
+    ">
+    <app-schedule-card [schedule]="schedule" [movie]="getScheduleMovie(schedule)"></app-schedule-card>
+    <span class="delete-button fs-24" (click)="onClickDelete(schedule)">
+      <i class="icon ion-ios-trash"></i>
+    </span>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <pagination-controls (pageChange)="onChangePage($event)">
+    </pagination-controls>
+  </div>
+</div>

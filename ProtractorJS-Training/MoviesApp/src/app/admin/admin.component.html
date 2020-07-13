@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="menu">
+        <div class="form-group">
+          <label class="font-weight-bold">Maintain Module</label>
+          <select class="form-control" (change)="onModuleChanged($event)">
+            <option *ngFor="let module of modules" [ngValue]="module">
+              {{ module }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

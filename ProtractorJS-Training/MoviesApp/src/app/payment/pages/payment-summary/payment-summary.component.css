@@ -1,0 +1,14 @@
+.row {
+    padding: 0.2em
+  }
+  
+  .container {
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 8px;
+  
+  }
+  /* .container {
+    background-color: rgb(212, 221, 211);
+  } */
+  

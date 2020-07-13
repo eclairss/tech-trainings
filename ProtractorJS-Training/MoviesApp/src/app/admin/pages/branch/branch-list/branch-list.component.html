@@ -1,0 +1,47 @@
+<div class="row my-2">
+  <div class="col-md-12">
+    <form class="form-inline">
+      <button class="btn btn-outline-primary mr-3" (click)="onClickAdd()">
+        <i class="icon ion-ios-add-circle-outline"></i> Add Branch
+      </button>
+      <label for="txtSearchBranch" class="font-weight-bold mr-3">Search:</label>
+      <input id="txtSearchBranch" type="text" class="form-control" [class.is-invalid]="searchFailed"
+        [value]="searchItem.name" (selectItem)="onSelectItem($event)" [ngbTypeahead]="search"
+        [resultTemplate]="branchSearchTemplateList" placeholder="Branch name" />
+      <span *ngIf="searching">searching...</span>
+      <div class="invalid-feedback" *ngIf="searchFailed">
+        Sorry, suggestions could not be loaded.
+      </div>
+      <ng-template #branchSearchTemplateList let-r="result" let-t="term">
+        <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+      </ng-template>
+      <label class="font-weight-bold ml-3 mr-3">
+        Items Per Page
+      </label>
+      <select name="itemsPerPage" class="form-control" [(ngModel)]="itemsPerPage"
+        (change)="onItemsPerPageChanged($event)">
+        <option [ngValue]="6">6</option>
+        <option [ngValue]="12">12</option>
+        <option [ngValue]="18">18</option>
+      </select>
+    </form>
+  </div>
+</div>
+<div class="row row-eq-height my-2">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let branch of branches | paginate : {
+        itemsPerPage: itemsPerPage,
+        currentPage: page,
+        totalItems: totalCount
+      }">
+      <app-branch-card [branch]="branch" [link]="'/admin/branch/' + branch.id"
+        (checkSchedulesClickEvent)="onCheckSchedulesClick($event)"></app-branch-card>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <pagination-controls (pageChange)="onChangePage($event)">
+    </pagination-controls>
+  </div>
+</div>

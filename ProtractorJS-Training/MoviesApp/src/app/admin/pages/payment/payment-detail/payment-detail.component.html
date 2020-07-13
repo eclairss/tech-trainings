@@ -1,0 +1,27 @@
+<div class="row" *ngIf="payment">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label class="col-form-label font-weight-bold col-md-3">Transaction Date</label>
+            <span class="col-md-9">{{ momentFormat(payment.transactionDate, 'YYYY-MM-DD hh:mm a') }}</span>
+        </div>
+        <div class="form-group" *ngIf="user">
+            <label class="col-form-label font-weight-bold col-md-3">User</label>
+            <span class="col-md-9">{{ user.email }}</span>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label font-weight-bold col-md-3">Description</label>
+            <span class="col-md-9">{{ payment.description }}</span>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label font-weight-bold col-md-3">Cardholder Name</label>
+            <span class="col-md-9">{{ payment.cardholderName }}</span>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label font-weight-bold col-md-3">Amount</label>
+            <span class="col-md-9">{{ payment.amount }}</span>
+        </div>
+    </div>
+</div>
+<a href="#" routerLink="/admin/payment" class="fs-24">
+    <i class="icon ion-ios-arrow-dropleft"></i>Back to list
+</a>

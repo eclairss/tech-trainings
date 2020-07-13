@@ -1,0 +1,6 @@
+node_modules/*
+pacakge-lock.json
+target/*
+tests/sandbox.js
+.package.json.swp
+TODO

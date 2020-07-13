@@ -1,0 +1,30 @@
+.form-main-content {
+    margin-left: 20px;
+    width: 50%;
+}
+
+.header-section {
+    padding: 10px;
+    text-align: center;
+}
+
+.label-content {
+    font-size: 15px;
+    padding: 10px;
+}
+
+.form-control.dateinput {
+    display: inline;
+}
+
+.text-danger {
+    font-size: 12px;
+}
+
+.form-content {
+    margin-left: 20px;
+}
+
+button {
+    margin-left: 10px;
+}

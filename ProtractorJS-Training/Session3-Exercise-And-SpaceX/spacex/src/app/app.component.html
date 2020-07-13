@@ -1,0 +1,24 @@
+<div class="header">
+  <div class="logo"></div>
+  <div class="plan-create" *ngIf="currentUser | async">
+    <button class="btn btn-danger" [routerLink]="['launchplan', 0]">Plan A Launch</button>
+  </div>
+  <div class="nav">
+    <ul>
+      <li><a [routerLink]="['dashboard']">Dashboard</a></li>
+      <ng-container *ngIf="currentUser.getValue(); else nonuser">
+        <li *ngIf="currentUser.getValue()?.UserRole === 0"><a [routerLink]="['admin']">Admin</a></li>
+        <li><a [routerLink]="['user']">{{ currentUser.getValue().FirstName }}'s Profile</a></li>
+        <li><a (click)="logOut()" href="#">Logout</a></li>
+      </ng-container>
+      <ng-template #nonuser>
+        <li><a [routerLink]="['login']">Login</a></li>
+        <li><a [routerLink]="['user/registration']">Register</a></li>
+      </ng-template>
+    </ul>
+  </div>
+</div>
+
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>

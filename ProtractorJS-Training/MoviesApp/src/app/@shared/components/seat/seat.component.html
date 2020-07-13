@@ -1,0 +1,3 @@
+<div class="seat" *ngIf="seat" [class.disabled]="seat.disabled" [class.taken]="seat.taken" [class.selected]="seat.selected">
+    <span [hidden]="seat.disabled">{{ seat.text }}</span>
+</div>

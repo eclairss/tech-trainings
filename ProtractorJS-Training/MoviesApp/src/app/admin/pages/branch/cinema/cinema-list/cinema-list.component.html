@@ -1,0 +1,11 @@
+<h4>Cinemas</h4>
+<ul>
+  <li *ngFor="let cinema of cinemas$ | async">
+    <a
+      href="#"
+      [routerLink]="['/admin', 'branch', cinema.branchId, 'cinema', cinema.id]"
+    >
+      {{ cinema.name }}
+    </a>
+  </li>
+</ul>

@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row row-eq-height">
+    <div class="row">
+      <div class="col-md-3" *ngFor="let branch of branches$ | async">
+        <app-branch-card [branch]="branch" (checkSchedulesClickEvent)="onCheckSchedulesClick($event)"></app-branch-card>
+      </div>
+    </div>
+  </div>
+</div>

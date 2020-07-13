@@ -1,0 +1,161 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Calibri";
+    background: #00141B;
+    /* background: url('./assets/images/SpaceX/galaxy--bg.png') fixed; */
+    background-position: 50% 50%;
+    background-size: cover;
+    transform: rotate(180);
+}
+
+.header {
+    padding: 1% 2%;
+    background: #fff;
+}
+
+
+.logo {
+    background: url('./assets/images/SpaceX/spacex--logo.png') no-repeat;
+    background-size: 100%;
+    background-position: 50% 50%;
+    width: 250px;
+    min-height: 110px;
+    display: inline-block;
+}
+
+.plan-create {
+    position: absolute;
+    margin-top: 25px;
+    padding: 10px;  
+    display: inline-block;
+    vertical-align: middle;
+    border-left: 2px #00141B solid;
+}
+
+.nav {
+    position: absolute;
+    right: 50px;
+    text-align: right;
+    display:inline-block;
+}
+.nav ul {
+    display: table-cell;
+    vertical-align: middle;
+    height: 110px;
+    list-style-type: none;
+}
+.nav ul li {
+    display: inline-block;
+    min-width: 20px;
+    padding: 0 20px;
+    text-transform: uppercase;
+    font-size: 20px !important;
+}
+
+.main-content {
+    color: #fff;
+    min-height: 500px;
+    padding: 2% 0;
+}
+
+
+/* Dashboard */
+/* .board-create {
+    position: absolute;
+    text-align: right;
+    right: 20px;
+} */
+
+
+
+
+
+
+/* Launch Plan */
+.launch-plan {
+    background: #00141B;
+    display: flex;
+    flex-wrap: wrap;
+    width:90%;
+    /* justify-content: space-evenly; */
+    color: #000;
+    margin: auto;;
+}
+
+.launch-item{
+    flex: 0 0 33.3333%;
+    height: 150px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    background: #eaeff1;
+    border: 1px transparent solid;
+    border-radius: 10px;
+}
+
+
+.launch-item-details {
+    padding: 10px 0px; 
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    width: 180px;
+    font-size: 14px;
+}
+
+.launch-item-details .mission-name {
+    text-transform: uppercase;
+    border-bottom: 2px solid #00141B;
+    font-size: 23px;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.launch-item img {
+    height: 80%;
+    display: inline-block;
+    margin: 0 -5%;
+}
+
+.launch-item .launch-status {
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.launch-item .mini-buttons {
+    color: #000;
+    width: 25px;
+    position: relative;
+    float: right;   
+    right: 5px;
+    top: 5px;
+    z-index: 999;
+}
+
+.mini-buttons > span {
+    font-size: 16px;
+    background: #eaeff1;
+    border: 0px solid #00141B;
+    border-radius: 20px;
+    height: 25px;
+    width: 25px;
+    display: block;
+    margin-top: 2px;
+    padding-left: 6px;
+}
+
+/* Launch Plan Form */
+.frm-launcher {
+
+}
+.frm-launcher .sub-image{
+    width: 20%;
+}
+
+.sub-image img {
+    height: 500px;
+}

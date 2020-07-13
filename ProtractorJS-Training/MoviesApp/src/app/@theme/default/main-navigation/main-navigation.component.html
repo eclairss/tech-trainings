@@ -1,0 +1,94 @@
+<!-- Main Navigation Start -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+  <div class=""></div>
+  <a class="navbar-brand" href="#" routerLink="/" routerLinkActive="active"
+    >Movie Booking App</a
+  >
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#"
+          routerLink="/movies"
+          routerLinkActive="active"
+          >Movies</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#"
+          routerLink="/branches"
+          routerLinkActive="active"
+          >Branches</a
+        >
+      </li>
+      <div
+        class="navbar-nav"
+        *ngIf="isAdmin(); then admin"
+      ></div>
+      <ng-template #admin>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#"
+            routerLink="/admin"
+            routerLinkActive="active"
+            >Admin</a
+          >
+        </li>
+      </ng-template>
+    </ul>
+    <div
+      class="navbar-nav"
+      *ngIf="isLoggedIn(); then loggedIn; else notLoggedIn"
+    ></div>
+    <ng-template #loggedIn>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">{{ auth.email }}</a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-link nav-link" (click)="onLogout()">
+            Logout
+          </button>
+        </li>
+      </ul>
+    </ng-template>
+    <ng-template #notLoggedIn>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#"
+            routerLink="/login"
+            routerLinkActive="active"
+            >Login</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#"
+            routerLink="/register"
+            routerLinkActive="active"
+            >Register</a
+          >
+        </li>
+      </ul>
+    </ng-template>
+  </div>
+</nav>
+<!-- Main Navigation End -->

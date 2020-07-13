@@ -1,0 +1,3 @@
+0000000000000000000000000000000000000000 c0e2683ea2179ddfd012b85b8c8877634c8b0957 eclairss <> 1590606423 +0800	commit (initial): test only - mocha chai working
+c0e2683ea2179ddfd012b85b8c8877634c8b0957 c0e2683ea2179ddfd012b85b8c8877634c8b0957 eclairss <> 1590606479 +0800	Branch: renamed refs/heads/master to refs/heads/Session7-Exercise-bonus
+c0e2683ea2179ddfd012b85b8c8877634c8b0957 2a06d1681e8bbd07a1af7649a87dec1e61aabdf1 eclairss <> 1590668821 +0800	commit: bonus in mocha chai -- there seems to be a bug in firefox/geckodriver

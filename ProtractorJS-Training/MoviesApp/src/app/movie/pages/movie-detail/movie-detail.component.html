@@ -1,0 +1,169 @@
+<div class="row">
+  <div class="col-md-12">
+    <app-movie-detail [movie]="movie"></app-movie-detail>
+  </div>
+</div>
+<div class="row">
+  <form
+    class="reserve-form"
+    [formGroup]="reserveForm"
+    (ngSubmit)="showDialog()"
+  >
+    <div clas="cell">
+      <div class="col-md-12 reservation-details">
+        <div class="cell">
+          <h2>Reservation Details</h2>
+          <mat-form-field>
+            <mat-label>Select Branch</mat-label>
+            <mat-select
+              formControlName="branchId"
+              (ngModelChange)="onBranchChange()"
+            >
+              <mat-option *ngFor="let branch of branches" [value]="branch.id">
+                {{ branch.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="cell">
+          <mat-form-field>
+            <mat-label>Select Cinema</mat-label>
+            <mat-select
+              formControlName="cinemaId"
+              (ngModelChange)="onCinemaChange()"
+            >
+              <mat-option *ngFor="let cinema of cinemas" [value]="cinema.id">
+                {{ cinema.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="cell">
+          <mat-form-field>
+            <mat-label>Choose a Date</mat-label>
+            <mat-select
+              formControlName="watchDate"
+              (ngModelChange)="onDateChange()"
+            >
+              <mat-option
+                *ngFor="let date of cinemaScheduleDates"
+                [value]="date"
+              >
+                {{ date }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="cell">
+          <mat-form-field>
+            <mat-label>Select Time</mat-label>
+            <mat-select
+              formControlName="scheduleId"
+              (ngModelChange)="onTimeChange()"
+            >
+              <mat-option
+                *ngFor="let schedule of cinemaScheduleTimes"
+                [value]="schedule.id"
+              >
+                {{ momentFormat(schedule.startDate, 'hh:mm a') }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="cell" *ngIf="noScheduleFound">
+        <p class="error">No schedule found.</p>
+      </div>
+    </div>
+    <div class="cell">
+      <div class="col-md-12 seat-plan" *ngIf="cinema && cinemaSeatPlan">
+        <app-seat-plan
+          [enableRowCol]="false"
+          [cinema]="cinema"
+          [cinemaSeatPlan]="cinemaSeatPlan"
+          (seatClickEvent)="seatClickEvent($event)"
+        ></app-seat-plan>
+      </div>
+    </div>
+    <div class="cell">
+      <div class="col-md-12 seat-legend" *ngIf="cinema && cinemaSeatPlan">
+        <div
+          class="seat-legend-grid"
+          style="grid-template-rows: 5vh 5vh 5vh; grid-template-columns: 10vh;"
+        >
+          <app-seat *ngFor="let seat of seatLegend" [seat]="seat"></app-seat>
+        </div>
+      </div>
+      <div
+        class="confirm-button"
+        *ngIf="reserveForm.valid && selectedSeats.length > 0"
+      >
+        <button class="btn btn-primary m-2" type="submit">
+          Confirm Reservation
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<p-dialog [(visible)]="displayLoginPrompt" [modal]="true"
+  [responsive]="true"
+  [style]="{ minWidth: '200px' }"
+  [minY]="70"
+  [maximizable]="true"
+  [baseZIndex]="10000"
+  [resizable]="false"
+  [draggable]="false">
+  <div>
+    <button
+    type="button"
+    (click)="redirectNotLogged(false)"
+    class="btn btn-success m-2 not-logged-btn"
+    >
+    Log In
+    </button>
+  </div>
+  <div>
+    <button
+    type="button"
+    (click)="redirectNotLogged(true)"
+    class="btn btn-secondary m-2 not-logged-btn"
+    >
+    Sign Up
+    </button>
+  </div>
+</p-dialog>
+<p-dialog
+  header="Ticket Summary"
+  [(visible)]="displaySummary"
+  [modal]="true"
+  [responsive]="true"
+  [style]="{ minWidth: '200px' }"
+  [minY]="70"
+  [maximizable]="true"
+  [baseZIndex]="10000"
+  [resizable]="false"
+>
+  <app-reservation-summary
+    [branch]="branch"
+    [cinema]="cinema"
+    [movie]="movie"
+    [schedule]="selectedSchedule"
+    [reservation]="reservation"
+  ></app-reservation-summary>
+  <p-footer>
+    <button
+      type="button"
+      (click)="reserve(reserveForm)"
+      class="btn btn-success m-2"
+    >
+      Proceed to Payment
+    </button>
+    <button
+      type="button"
+      (click)="display = false"
+      class="btn btn-secondary m-2"
+    >
+      Cancel
+    </button>
+  </p-footer>
+</p-dialog>

@@ -1,0 +1,74 @@
+<form (ngSubmit)="onSubmit()" *ngIf="branch">
+  <h4>Add Schedule</h4>
+  <h5>{{ branch.name }}</h5>
+  <div class="row">
+    <div class="col-md-2">
+      <label class="col-form-label">Cinema</label>
+      <select name="cinema" class="form-control" [(ngModel)]="cinema">
+        <option [ngValue]="undefined">--Select Cinema--</option>
+        <option *ngFor="let cinema of cinemas$ | async" [ngValue]="cinema">
+          {{ cinema.name }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label class="col-form-label">Movie</label>
+      <select name="movie" class="form-control" [(ngModel)]="movie">
+        <option [ngValue]="undefined">--Select Movie--</option>
+        <option *ngFor="let movie of movies$ | async" [ngValue]="movie">
+          {{ movie.Title }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <label class="col-form-label">Start Date</label>
+      <div class="input-group">
+        <input
+          class="form-control"
+          placeholder="yyyy-mm-dd"
+          name="startDate"
+          [(ngModel)]="startDate"
+          ngbDatepicker
+          #d="ngbDatepicker"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            (click)="d.toggle()"
+            type="button"
+          >
+            <i class="icon ion-ios-calendar"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <ngb-timepicker
+        name="startTime"
+        class="small"
+        [(ngModel)]="startTime"
+      ></ngb-timepicker>
+    </div>
+    <div class="col-md-2">
+        <label class="col-form-label">Ticket Price</label>
+      <input type="text" name="ticketPrice" class="form-control" pInputText pKeyFilter="money" placeholder="Ticket Price" [(ngModel)]="ticketPrice">
+    </div>
+    <div class="col-md-auto">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!cinema || !movie"
+      >
+        Add
+      </button>
+    </div>
+  </div>
+</form>
+<div class="row my-5" *ngIf="movie">
+  <div class="col-md-12">
+    <app-movie-detail [movie]="movie"></app-movie-detail>
+  </div>
+</div>
+<a href="#" [routerLink]="['/admin', 'branch', branch.id, 'schedule']" class="fs-24" *ngIf="branch">
+  <i class="icon ion-ios-arrow-dropleft"></i>Back to list
+</a>

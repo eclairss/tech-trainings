@@ -1,0 +1,16 @@
+{
+  "name": "final-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "protractor ./config/conf.js",
+    "server-update": "webdriver-manager update"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "protractor": "^7.0.0",
+    "protractor-jasmine2-screenshot-reporter": "^0.5.0"
+  }
+}

@@ -1,0 +1,10 @@
+img {
+  height: auto;
+}
+
+.branch-card {
+  border: 1px solid;
+  padding: 5px;
+  height: 100%;
+  width: 100%;
+}

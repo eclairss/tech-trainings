@@ -1,0 +1,62 @@
+<div class="row my-2">
+    <div class="col-md-12">
+        <form class="form-inline">
+            <label class="font-weight-bold mr-3">Transaction Date</label>
+            <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="transactionDate"
+                    [(ngModel)]="transactionDate" (dateSelect)="onDateSelect()" ngbDatepicker #d="ngbDatepicker" />
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                        <i class="icon ion-ios-calendar"></i>
+                    </button>
+                </div>
+            </div>
+            <label class="font-weight-bold ml-3 mr-3">
+                Items Per Page
+            </label>
+            <select name="itemsPerPage" class="form-control" [(ngModel)]="itemsPerPage"
+                (change)="onItemsPerPageChanged($event)">
+                <option [ngValue]="10">10</option>
+                <option [ngValue]="15">15</option>
+                <option [ngValue]="20">20</option>
+            </select>
+        </form>
+    </div>
+</div>
+<div class="row row-eq-height my-2">
+    <div class="col-md-12">
+        <table>
+            <thead>
+                <tr>
+                    <th class="text-center">Date</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-center">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="
+                let payment of payments
+                  | paginate
+                    : {
+                        itemsPerPage: itemsPerPage,
+                        currentPage: page,
+                        totalItems: totalCount
+                      }
+              ">
+                    <td class="transaction-date">
+                        <a
+                            [routerLink]="[payment.id]">{{ momentFormat(payment.transactionDate, 'YYYY-MM-DD hh:mm a') }}</a>
+                    </td>
+                    <td class="description">{{ payment.description }}</td>
+                    <td class="amount">{{ payment.amount }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <pagination-controls (pageChange)="onChangePage($event)">
+        </pagination-controls>
+    </div>
+</div>

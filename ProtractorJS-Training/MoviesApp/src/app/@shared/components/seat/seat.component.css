@@ -1,0 +1,23 @@
+.seat {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.disabled {
+  background-color: black;
+}
+
+.taken {
+  background-color: #808080;
+}
+
+.selected {
+  background-color: #ffa500;
+}
+
+.seat span {
+  vertical-align: middle;
+}

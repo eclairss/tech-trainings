@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "FirstName": "Elon",
+      "LastName": "Musk",
+      "Username": "admin",
+      "Password": "admin",
+      "EmailAddress": "elonmusk@test.com",
+      "UserRole": 1
+    }
+  ],
+  "launchplans": [
+    {
+      "MissionName": "Fly me to the moon",
+      "MissionID": "f441fff7-573d-b4f4-0e17-d37f1ba76eed",
+      "Details": "Moon",
+      "LaunchDate": "2020-04-20T16:00:00.000Z",
+      "LaunchedWindow": 1,
+      "LaunchSuccess": null,
+      "id": 1
+    }
+  ]
+}

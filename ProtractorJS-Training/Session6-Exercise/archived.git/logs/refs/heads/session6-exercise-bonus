@@ -1,0 +1,8 @@
+0000000000000000000000000000000000000000 741e907d65c9671e8ec10711298acda9bc4e1ca8 eclairss <> 1590253846 +0800	commit (initial): Initial commit of working TC1, TC2 and TC3 for Session6-Exercise
+741e907d65c9671e8ec10711298acda9bc4e1ca8 741e907d65c9671e8ec10711298acda9bc4e1ca8 eclairss <> 1590253920 +0800	Branch: renamed refs/heads/master to refs/heads/session6-exercise
+741e907d65c9671e8ec10711298acda9bc4e1ca8 68839557e5476b738af8805350946b18acbd89e3 eclairss <> 1590254992 +0800	commit: added e2e spec file (wip)
+68839557e5476b738af8805350946b18acbd89e3 18dc68c025c8ca9524b382fb7f109e647acfbfff eclairss <> 1590270001 +0800	commit: working e2e spec completed
+18dc68c025c8ca9524b382fb7f109e647acfbfff b82830eafce63d0ba5ac558740a3e5e07e5bde31 eclairss <> 1590313541 +0800	commit: fully working e2e spec
+b82830eafce63d0ba5ac558740a3e5e07e5bde31 6d077852faa8b7eb970a40299064df4aad8b1713 eclairss <> 1590313812 +0800	commit: multibrowser working
+6d077852faa8b7eb970a40299064df4aad8b1713 4c5f6ff8e33b0c331a8a2efb98bcd64ae2f81929 eclairss <> 1590314384 +0800	commit: final -bonus
+4c5f6ff8e33b0c331a8a2efb98bcd64ae2f81929 4c5f6ff8e33b0c331a8a2efb98bcd64ae2f81929 eclairss <> 1590314517 +0800	Branch: renamed refs/heads/session6-exercise to refs/heads/session6-exercise-bonus

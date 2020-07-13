@@ -1,0 +1,16 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = git@github.com:eclairss/protractorjs-training-class4.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "Session7-Exercise-bonus"]
+	remote = origin
+	merge = refs/heads/Session7-Exercise-bonus
+[remote "azure"]
+	url = clarissao@vs-ssh.visualstudio.com:v3/clarissao/ProtractorJS_Class4/ProtractorJS_Class4
+	fetch = +refs/heads/*:refs/remotes/azure/*

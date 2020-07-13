@@ -1,0 +1,7 @@
+header {
+  margin-bottom: 60px;
+}
+
+.content {
+    min-height: calc(100vh - 200px)
+}

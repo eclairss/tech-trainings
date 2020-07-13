@@ -1,0 +1,23 @@
+{
+  "name": "session7-exercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "protractor": "^7.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^7.2.0"
+  },
+  "scripts": {
+    "test": "protractor ./config/conf.js",
+    "parallel-test": "protractor ./config/multibrowser-conf.js",
+    "server-update": "webdriver-manager update",
+    "server": "webdriver-manager start",
+    "server-shutdown": "webdriver-manager shutdown"
+  },
+  "author": "",
+  "license": "ISC"
+}

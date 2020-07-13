@@ -1,0 +1,19 @@
+h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.table-main-content {
+  margin: auto;
+  width: 80%;
+  padding: 20px;
+}
+
+.controls-content {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.table-main-content thead {
+  text-align: center;
+}

@@ -1,0 +1,35 @@
+<div class="launch-item" [kickoff]="model.LaunchDate">
+
+    <div class="mini-buttons">
+        <span *ngIf="enableDelete()"><i class="fa fa-times" (click)="deletePlan()"></i></span>
+        <span><i class="fa fa-pencil" (click)="loadDetails()"></i></span>
+        <!-- <span>Edit</span>
+        <span>Delete</span> -->
+    </div>
+
+    <img src="{{imgSrc}}" />
+
+    <div class="launch-item-details">
+        <div class="mission-name">
+            <ng-template [ngIf]="model.LaunchSuccess !== null" [ngIfElse]="SuccessPending">
+                <span class="launch-status badge" [ngClass]="{'badge-primary': model.LaunchSuccess === 'Success', 'badge-danger': model.LaunchSuccess === 'Fail'}">
+                    {{ model.LaunchSuccess }}
+                </span>
+            </ng-template>
+            <ng-template #SuccessPending>
+                <span class="launch-status badge badge-secondary">Pending</span>
+            </ng-template>
+
+            <span> {{model.MissionName}}</span>
+        </div>
+
+        <div *ngIf="model.Rocket">
+            <!-- <span>Rocket Name: </span> -->
+            <span>{{model.Rocket.Name}} ({{model.Rocket.Type}})</span>
+        </div>
+        <div>
+            <span>Launch Date: {{model.LaunchDate | date}}</span>
+        </div>
+    </div>
+
+</div>

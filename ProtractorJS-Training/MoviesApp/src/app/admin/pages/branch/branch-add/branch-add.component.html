@@ -1,0 +1,44 @@
+<h4>Add Branch</h4>
+<div class="row">
+  <div class="col-md-12">
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">Name</label>
+        <div class="col-md-10">
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            placeholder="Branch name"
+          />
+          <div
+            *ngIf="
+              addForm.controls['name'].invalid &&
+              (addForm.controls['name'].dirty ||
+                addForm.controls['name'].touched)
+            "
+            class="text-danger"
+          >
+            <span *ngIf="addForm.controls['name'].errors.required">
+              Name is required.
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">Address</label>
+        <div class="col-md-10">
+          <textarea formControlName="address" class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="row m-3">
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<a href="#" routerLink="/admin/branch" class="fs-24">
+  <i class="icon ion-ios-arrow-dropleft"></i>Back to list
+</a>

@@ -1,0 +1,37 @@
+<div class="container">
+    <form class="form-content" #frmLogin="ngForm" (ngSubmit)="frmLogin.form.valid && onSubmit(frmLogin)">
+       <div class="row invalid-feedback" *ngIf="frmLogin.submitted && loginFailed">
+           Invalid username or password.
+       </div>
+        <div class="row">
+            <div class="form-group">
+                <div>
+                    <label>Username</label>
+                    <input type="text" class="form-control" value="" #username="ngModel" name="username"
+                        [(ngModel)]="loginModel.Username"
+                        [ngClass]="{ 'is-invalid': frmLogin.submitted && username.invalid }" required />
+
+                    <div *ngIf="frmLogin.submitted && username.invalid" class="invalid-feedback">
+                        <div *ngIf="username.errors.required">Username is required</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div>
+                    <label>Password</label>
+                    <input type="password" class="form-control" value="" #password="ngModel" name="password"
+                        [(ngModel)]="loginModel.Password"
+                        [ngClass]="{ 'is-invalid': frmLogin.submitted && password.invalid }" required />
+
+                    <div *ngIf="frmLogin.submitted && password.invalid" class="invalid-feedback">
+                        <div *ngIf="password.errors.required">Password is required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-light" [ngClass]="{'disabled': isValidatingLogin}">Login</button>
+    </form>
+</div>

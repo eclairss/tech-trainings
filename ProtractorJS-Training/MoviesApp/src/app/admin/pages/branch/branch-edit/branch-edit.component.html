@@ -1,0 +1,61 @@
+<h4>Edit Branch</h4>
+<div class="row" *ngIf="branch">
+  <div class="col-md-6">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">Name</label>
+        <div class="col-md-10">
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            placeholder="Branch name"
+          />
+          <div
+            *ngIf="
+              editForm.controls['name'].invalid &&
+              (editForm.controls['name'].dirty ||
+                editForm.controls['name'].touched)
+            "
+            class="text-danger"
+          >
+            <span *ngIf="editForm.controls['name'].errors.required">
+              Name is required.
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label">Address</label>
+        <div class="col-md-10">
+          <textarea formControlName="address" class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="row m-3">
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <button class="btn btn-outline-secondary mr-2" (click)="onClickAddCinema()">
+          <i class="icon ion-ios-add-circle-outline"></i> Add Cinema
+        </button>
+        <button class="btn btn-outline-info mr-2" (click)="onClickViewSchedules()">
+          <i class="icon ion-ios-calendar"></i> View Schedules
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <app-cinema-list [branch]="branch"></app-cinema-list>
+      </div>
+    </div>
+  </div>
+</div>
+<a href="#" routerLink="/admin/branch" class="fs-24">
+  <i class="icon ion-ios-arrow-dropleft"></i>Back to list
+</a>

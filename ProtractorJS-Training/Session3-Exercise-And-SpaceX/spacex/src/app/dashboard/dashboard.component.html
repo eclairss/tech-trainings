@@ -1,0 +1,24 @@
+<div>
+    <div class="board-create form-group" style="display:none">
+        <div>
+            Filter By: 
+            <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  All
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Mission Name</a>
+                  <a class="dropdown-item" href="#">Rocket Name</a>
+                  <a class="dropdown-item" href="#">Launch Status</a>
+                  <a class="dropdown-item" href="#">Launch Date</a>
+                </div>
+              </div>
+            <div>
+                <input type="text" class="form-control input" style="width:10%" />
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <launch-plan [launches]="launches"></launch-plan>
+    </div>
+</div>

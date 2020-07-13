@@ -1,0 +1,19 @@
+form input{
+    width: 100%;
+}
+
+form{
+    width: 40%;
+    position: absolute;
+    right:100px;
+}
+form button{
+    width: 100%;
+    padding: 10px;
+}
+form select{
+    width: 50%;
+    padding: 10px;
+    float: right;
+    margin-bottom: 15px;
+}

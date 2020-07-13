@@ -1,0 +1,12 @@
+<div class="movie-card">
+  <div class="text-center">
+    <img class="img-fluid" [src]="movie.Poster" />
+
+    <h6>{{ movie.Title }}</h6>
+    <p>{{ startDate.format('YYYY-MM-DD hh:mm a') }} | {{ movie.Runtime }}</p>
+    <p>Rated: {{ movie.Rated }}</p>
+
+    <button class="btn btn-info m-2" (click)="onClickViewTrailer()">View Trailer</button>
+    <button class="btn btn-info m-2">Get Ticket</button>
+  </div>
+</div>
